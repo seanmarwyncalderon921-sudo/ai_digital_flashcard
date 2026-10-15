@@ -6,7 +6,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json({ limit: '50mb' }));
-app.use(express.static('public'));
+app.use(express.static('.'));
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
