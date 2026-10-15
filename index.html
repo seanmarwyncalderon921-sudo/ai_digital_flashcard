@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Academic Reviewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="logo.jpg" alt="School logo" class="logo" onerror="this.style.display='none'" />
+      <div class="brand-text">
+        <span class="school">San Antonio de Padua College</span>
+        <h1>AI Academic Reviewer</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-layout">
+    <!-- LEFT SIDE: ACTIVE STUDY BOX INTERFACE -->
+    <div class="left-column">
+      <section class="panel main-content">
+        <h2>Study Material</h2>
+        <p class="sub">Paste your textbook chapters, lesson notes, or snap a photo of your reviewer.</p>
+        <textarea id="notes" placeholder="Paste your lesson, notes, or reviewer here..."></textarea>
+        
+        <!-- Clean, integrated bottom toolbar row -->
+        <div class="toolbar-row">
+          <div class="toolbar-left">
+            <label for="image" class="upload-btn">
+              📷 Upload Image Notes
+            </label>
+            <input type="file" id="image" accept="image/*" style="display: none;" />
+            <span id="file-name" class="file-status">No file selected</span>
+          </div>
+
+          <div class="toolbar-right">
+            <label class="dropdown-label">Cards:
+              <select id="count">
+                <option>5</option><option selected>10</option><option>15</option><option>20</option>
+              </select>
+            </label>
+            <button id="generate">Generate Flashcards</button>
+          </div>
+        </div>
+        <p id="status"></p>
+      </section>
+
+      <!-- FLASHCARD PANEL CONTAINER -->
+      <section id="study" class="hidden">
+        <div class="meta">
+          <span id="counter"></span>
+          <div class="progress"><span id="bar"></span></div>
+        </div>
+
+        <div class="card" id="card">
+          <div class="card-inner">
+            <div class="face front" id="front"></div>
+            <div class="face back" id="back"></div>
+          </div>
+        </div>
+        <p class="hint">Click the card or press <kbd>Space</kbd> to flip · <kbd>←</kbd> <kbd>→</kbd> to move</p>
+
+        <div class="controls">
+          <button class="ghost" id="prev">← Prev</button>
+          <button class="ghost" id="shuffle">Shuffle</button>
+          <button id="next">Next →</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT SIDE: TARGET CONTROLS & ACADEMIC STRAND DETAILS SIDEBAR -->
+    <aside class="sidebar-panel">
+      <!-- Grade Level Selection Widget -->
+      <div class="side-card">
+        <h3>Grade Level</h3>
+        <p class="side-sub">Select target student deployment tier:</p>
+        <div class="selection-grid" id="grade-container">
+          <span class="selector-badge active" data-value="Grade 11">Grade 11</span>
+          <span class="selector-badge" data-value="Grade 12">Grade 12</span>
+        </div>
+      </div>
+
+      <!-- Research Scope Track Selection Widget -->
+      <div class="side-card">
+        <h3>Research Scope</h3>
+        <p class="side-sub">Select the target group for this testing instrument:</p>
+        <div class="selection-grid" id="strand-container">
+          <span class="selector-badge active" data-value="STEM">STEM</span>
+          <span class="selector-badge" data-value="ABM">ABM</span>
+          <span class="selector-badge" data-value="HUMSS">HUMSS</span>
+          <span class="selector-badge" data-value="TVL">TVL</span>
+        </div>
+      </div>
+
+      <div class="side-card info-card">
+        <h3>Quick Instructions</h3>
+        <ul class="guide-list">
+          <li>Provide at least 2 full paragraphs of lesson data for best results.</li>
+          <li>Ensure text in uploaded photos is clear and readable.</li>
+          <li>Use the arrow keys (← →) or Spacebar to navigate flashcards.</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
